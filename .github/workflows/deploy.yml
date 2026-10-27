@@ -6,12 +6,11 @@ on:
     branches: [main]
   workflow_dispatch: # 允许在 Actions 页面手动触发
 
-# Pages 部署所需的权限（administration: write 用于自动启用 Pages 站点）
+# Pages 部署所需的权限（Pages 站点在仓库 Settings → Pages 中手动启用一次，Source 选 GitHub Actions）
 permissions:
   contents: read
   pages: write
   id-token: write
-  administration: write
 
 # 同一时间只保留一次部署，新推送会取消进行中的旧部署
 concurrency:
@@ -32,12 +31,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 首次运行时自动启用 Pages（build_type=workflow），无需手动到设置里开启
+      # 读取 Pages 站点配置（站点需先在 Settings → Pages 中启用，Source 选 GitHub Actions）
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Build
         run: npm run build
