@@ -6,11 +6,12 @@ on:
     branches: [main]
   workflow_dispatch: # 允许在 Actions 页面手动触发
 
-# Pages 部署所需的权限
+# Pages 部署所需的权限（administration: write 用于自动启用 Pages 站点）
 permissions:
   contents: read
   pages: write
   id-token: write
+  administration: write
 
 # 同一时间只保留一次部署，新推送会取消进行中的旧部署
 concurrency:
