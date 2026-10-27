@@ -9,3 +9,4 @@ dist
 # 编辑器 / 系统文件
 .DS_Store
 .idea
+.trae-html-share-packages
