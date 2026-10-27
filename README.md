@@ -1,5 +1,7 @@
 # VerveCart 🛍️
 
+[![Deploy to GitHub Pages](https://github.com/changyongchao/vervecart/actions/workflows/deploy.yml/badge.svg)](https://github.com/changyongchao/vervecart/actions/workflows/deploy.yml)
+
 面向海外消费者的商品选购 Web 应用（演示项目）：浏览商品、搜索筛选、加入购物车，购物车数据本地持久化。基于 **React 18 + Vite 5 + TypeScript** 构建，使用 npm 作为包管理器。
 
 ## 功能清单
@@ -83,3 +85,10 @@ src/
 | localStorage 只存 id + quantity | 商品详情以目录为准，避免价格/名称更新后展示旧数据，也防止脏数据导致崩溃 |
 | UI 文案用英文 | 面向海外消费者的定位；代码注释用中文，方便面试沟通 |
 | mock 数据静态内置 | 演示项目不依赖后端；数据层独立（`data/products.ts`），替换为 API 请求只需改一处 |
+
+## 部署（GitHub Pages）
+
+- **在线地址**：https://changyongchao.github.io/vervecart/
+- **仓库**：https://github.com/changyongchao/vervecart
+
+流水线见 [.github/workflows/deploy.yml](.github/workflows/deploy.yml)：推送到 `main` 分支（或在 Actions 页面手动触发）后，GitHub Actions 自动执行 `npm ci` → `npm run build`（注入 Pages 子路径 `BASE_PATH`）→ 部署到 GitHub Pages。`actions/configure-pages` 的 `enablement: true` 会在首次运行时自动启用 Pages，无需手动到仓库设置里开启。
